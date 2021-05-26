@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
+import Header from '../Components/Header'
+
 const Products = () => {
     return (
-        <Text>Products</Text>
+        <>
+            <Header />
+            <Text>Products</Text>
+        </>
     );
 }
 

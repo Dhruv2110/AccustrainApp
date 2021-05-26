@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
+import Header from '../Components/Header'
+
 const Contact = () => {
     return (
-        <Text>Contact</Text>
+        <>
+            <Header />
+            <Text>Contact</Text>
+        </>
     );
 }
 
