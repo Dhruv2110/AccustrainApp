@@ -31,6 +31,8 @@ const App = () => {
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
+      shifting={false}
+      barStyle={{ backgroundColor: '#CA352B' }}
     />
   );
 };
