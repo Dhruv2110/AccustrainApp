@@ -1,15 +1,60 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Platform, Linking } from 'react-native'
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 import Header from '../Components/Header'
 
 const Home = () => {
+    let [fontsLoaded] = useFonts({
+        'OpenSans': require('../assets/fonts/OpenSans-Regular.ttf'),
+    });
 
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    }
+
+    const callUs = () => {
+        let phoneNumber =''
+        if (Platform.OS === 'android') {
+            phoneNumber = 'tel:+918818000994';
+        }
+        else {
+            phoneNumber = 'telprompt:+918818000994';
+        }
+        Linking.openURL(phoneNumber);
+    }
+
+    const whatsapp = () => {
+        let msg = 'Hi';
+        if (msg) 
+        {
+            let url = "whatsapp://send?text=" + msg + "&phone=918818000994";
+            Linking.openURL(url)
+        } else {
+            alert("Please enter message to send");
+        }
+    }
     return (
         <ScrollView style={{ backgroundColor:'#ffcccc'}}>
         <Header />
             <View style={styles.cardHeading}>
                 <Text style={styles.heading}>Accustrain</Text>
+                <View style={styles.btnContainer}>
+                    <TouchableOpacity onPress={callUs}>
+                    <View style={styles.call}>
+                        <Ionicons name="call-outline" size={27} color="#194B7E" />
+                        <Text style={{ fontSize: 20, color:'#194B7E',marginHorizontal:10}}>Call Now</Text>
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={whatsapp}>
+                    <View style={styles.wa}>
+                        <Ionicons name="logo-whatsapp" size={27} color="green" />
+                        <Text style={{ fontSize: 20, color: 'green', marginHorizontal: 5 }}>Whatsapp</Text>
+                    </View>
+                    </TouchableOpacity>
+                </View>
             </View>
             <Text style={{ textAlign: 'center', fontSize: 15, marginVertical:10}}>
                 <Text style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}>ACCUSTRAIN</Text> =
@@ -29,46 +74,36 @@ const Home = () => {
                         style={styles.imageSize}
                     />
                 </View>
-                <View style={styles.imageRow2}>
-                    <Image
-                        source={require('../assets/images/8.jpg')}
-                        style={styles.imageSize}
-                    />
-                    <Image
-                        source={require('../assets/images/10.jpg')}
-                        style={styles.imageSize}
-                    />
-                </View>
             </View>
             <View style={styles.cardAbout}>
-                    <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#CA352B'}}>About Us:</Text>
-                    <Text>ACCUSTRAIN is manufacturer of electronics weigh machine and weigh bridge product. 
+                <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#194B7E'}}>About Us:</Text>
+                <Text style={{ fontFamily: 'OpenSans',fontSize:14}}>ACCUSTRAIN is manufacturer of electronics weigh machine and weigh bridge product.
                     The range covers weigh scale from 1kg capacity to weigh bridge 100 ton capacity.
                     We know that our future success depends upon the skills and commitment of our employees and as market leaders therefore, 
                     we aim to recruit the best peoples in our business.</Text>
             </View>
             <View style={styles.cardSolution}>
-                    <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#CA352B'}}>Our Solutions:</Text>
-                    <Text>* Electronics Weigh Bridge.</Text>
-                    <Text>* Platform.</Text>
-                    <Text>* Table-Top.</Text>
-                    <Text>* Heavy duty Low Profile platform.</Text >
-                    <Text>* Weigh indicator.</Text >
-                    <Text>* Software solution.</Text >
-                    <Text>* Load cells.</Text >
-                    <Text>* Accessories.</Text >
+                <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#194B7E'}}>Our Solutions:</Text>
+                    <Text style={styles.AllText}>* Electronics Weigh Bridge.</Text>
+                    <Text style={styles.AllText}>* Platform.</Text>
+                    <Text style={styles.AllText}>* Table-Top.</Text>
+                    <Text style={styles.AllText}>* Heavy duty Low Profile platform.</Text >
+                    <Text style={styles.AllText}>* Weigh indicator.</Text >
+                    <Text style={styles.AllText}>* Software solution.</Text >
+                    <Text style={styles.AllText}>* Load cells.</Text >
+                    <Text style={styles.AllText}>* Accessories.</Text >
             </View>
             <View style={styles.cardProductUse}>
-                    <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#CA352B'}}>Our Products Use In:</Text>
-                <Text>* Construction Industry</Text>
-                <Text>* Agriculture and Farming</Text>
-                <Text>* Chemical and pharma</Text>
-                <Text>* Food and Beverages</Text >
-                <Text>* Manufacturing</Text >
-                <Text>* Transport and Logistics</Text >
-                <Text>* Waste and Recycling</Text >
-                <Text>* Mining and Aggregates</Text >
-                <Text>* Post Mail and Shipping</Text >
+                <Text style={{ fontSize: 25, fontStyle: 'italic', fontWeight: 'bold', color:'#194B7E'}}>Our Products Use In:</Text>
+                <Text style={styles.AllText}>* Construction Industry</Text>
+                <Text style={styles.AllText}>* Agriculture and Farming</Text>
+                <Text style={styles.AllText}>* Chemical and pharma</Text>
+                <Text style={styles.AllText}>* Food and Beverages</Text >
+                <Text style={styles.AllText}>* Manufacturing</Text >
+                <Text style={styles.AllText}>* Transport and Logistics</Text >
+                <Text style={styles.AllText}>* Waste and Recycling</Text >
+                <Text style={styles.AllText}>* Mining and Aggregates</Text >
+                <Text style={styles.AllText}>* Post Mail and Shipping</Text >
             </View>
         </ScrollView>
     );
@@ -76,7 +111,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     cardHeading:{
-        backgroundColor: '#ffe6e6',
+        backgroundColor: '#ffffff',
         // borderWidth:2,
         marginVertical:7,
         marginHorizontal:10,
@@ -88,16 +123,49 @@ const styles = StyleSheet.create({
         shadowRadius: 1, //IOS
     },
     heading:{
+        fontFamily:'OpenSans',
         fontSize: 64, 
         fontStyle: 'italic', 
         textAlign: 'center', 
         color: '#194B7E',
-        marginVertical:10,
+        marginVertical:0,
         elevation: 10,
         shadowColor: 'rgba(0,0,0, .4)', // IOS
         shadowOffset: { height: 1, width: 0 }, // IOS
         shadowOpacity: 1, // IOS
         shadowRadius: 1, //IOS
+    },
+    btnContainer:{
+        flexDirection:'row',
+        justifyContent:'center'
+    },
+    call:{
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        padding:5,
+        //alignContent:'stretch',
+        height:45,
+        width:150,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginVertical:10,
+        borderRadius:10,
+        borderWidth: 2,
+        borderColor: '#194B7E',
+
+    },
+    wa:{
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        padding: 5,
+        height: 45,
+        width: 150,
+        backgroundColor: 'white',
+        marginHorizontal: 15,
+        marginVertical: 10,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: 'green'
     },
     imageContainer:{
         justifyContent:'space-between',
@@ -105,7 +173,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginVertical: 10,
         // borderWidth:2,
-        height: '25%',
+        height: '12%',
         // paddingVertical:15
         
     },
@@ -129,7 +197,7 @@ const styles = StyleSheet.create({
         marginHorizontal:10,
         marginVertical:10,
         padding:10,  
-        height: 200,
+        height: 230,
         elevation: 10,
         shadowColor: 'rgba(0,0,0, .4)', // IOS
         shadowOffset: { height: 1, width: 0 }, // IOS
@@ -144,7 +212,7 @@ const styles = StyleSheet.create({
         marginVertical:10,
         // marginBottom:50,
         padding:10,  
-        height: 240,
+        height: 230,
         elevation: 10,
         shadowColor: 'rgba(0,0,0, .4)', // IOS
         shadowOffset: { height: 1, width: 0 }, // IOS
@@ -157,15 +225,19 @@ const styles = StyleSheet.create({
         borderRadius:15,
         marginHorizontal:10,
         marginVertical:10,
-        marginBottom:50,
+        marginBottom:20,
         padding:10,  
-        height: 240,
+        height: 245,
         elevation: 10,
         shadowColor: 'rgba(0,0,0, .4)', // IOS
         shadowOffset: { height: 1, width: 0 }, // IOS
         shadowOpacity: 1, // IOS
         shadowRadius: 1, //IOS
     },
+    AllText:{
+        fontFamily: 'OpenSans', 
+        fontSize: 14 
+    }
 })
 
 export default Home

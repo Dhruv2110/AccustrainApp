@@ -1,0 +1,32 @@
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${+1234567890}';
+    }
+    else {
+      phoneNumber = 'telprompt:${+1234567890}';
+    }
+
+
+      openWhatsApp = () => {
+    let msg = this.state.message;
+    let mobile = this.state.mobileNo;
+    if (mobile) {
+      if (msg) {
+        let url =
+          "whatsapp://send?text=" +
+          this.state.message +
+          "&phone=91" +
+          this.state.mobileNo;
+        Linking.openURL(url)
+          .then(data => {
+            console.log("WhatsApp Opened successfully " + data);
+          })
+          .catch(() => {
+            alert("Make sure WhatsApp installed on your device");
+          });
+      } else {
+        alert("Please enter message to send");
+      }
+    } else {
+      alert("Please enter mobile no");
+    }
+  };

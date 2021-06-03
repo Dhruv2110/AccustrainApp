@@ -32,7 +32,7 @@ const App = () => {
       onIndexChange={setIndex}
       renderScene={renderScene}
       shifting={false}
-      barStyle={{ backgroundColor: '#CA352B' }}
+      barStyle={{ backgroundColor: '#194B7E' }}
     />
   );
 };
