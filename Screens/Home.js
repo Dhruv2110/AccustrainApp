@@ -37,8 +37,10 @@ const Home = () => {
         }
     }
     return (
-        <ScrollView style={{ backgroundColor:'#ffcccc'}}>
+        <>
         <Header />
+        <ScrollView style={{ flex:1,backgroundColor:'#a6a6a6'}}>
+        
             <View style={styles.cardHeading}>
                 <Text style={styles.heading}>Accustrain</Text>
                 <View style={styles.btnContainer}>
@@ -56,13 +58,6 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={{ textAlign: 'center', fontSize: 15, marginVertical:10}}>
-                <Text style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}>ACCUSTRAIN</Text> =
-                <Text style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}> ACCU</Text>
-                <Text style={{ color: '#194B7E'}}>(accurate)</Text> +
-                <Text style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}> STRAIN</Text>
-                <Text style={{ color: '#194B7E' }}>(weight)</Text>
-            </Text>
             <View style={styles.imageContainer}>
                 <View style={styles.imageRow1}>
                     <Image
@@ -106,6 +101,7 @@ const Home = () => {
                 <Text style={styles.AllText}>* Post Mail and Shipping</Text >
             </View>
         </ScrollView>
+        </>
     );
 }
 
@@ -113,7 +109,7 @@ const styles = StyleSheet.create({
     cardHeading:{
         backgroundColor: '#ffffff',
         // borderWidth:2,
-        marginVertical:7,
+        marginVertical:10,
         marginHorizontal:10,
         borderRadius: 15,
         elevation: 15,
@@ -194,6 +190,7 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         //borderWidth:2,
         borderRadius:15,
+        marginTop:20,
         marginHorizontal:10,
         marginVertical:10,
         padding:10,  
@@ -225,7 +222,6 @@ const styles = StyleSheet.create({
         borderRadius:15,
         marginHorizontal:10,
         marginVertical:10,
-        marginBottom:20,
         padding:10,  
         height: 245,
         elevation: 10,
