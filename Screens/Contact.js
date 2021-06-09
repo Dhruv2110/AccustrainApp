@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity,Linking } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, Linking, ScrollView } from 'react-native'
 import { WebView } from 'react-native-webview';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -11,11 +11,13 @@ const Contact = () => {
     const iframeString = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6902.2329788324305!2d77.261992!3d30.119480000000003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f6c2b470f525439!2sACCUSTRAIN!5e0!3m2!1sen!2sin!4v1622782658987!5m2!1sen!2sin" width="470" height=350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'
     return (
         <>
+        
             <Header />
-            <View style={styles.container}>
-            <View style={styles.mapContainer}>
+            <ScrollView style={{ flex:1,backgroundColor: '#a6a6a6' }}>
+            {/* <View style={styles.container}> */}
+                <View style={styles.mapContainer}>
                 <WebView
-                    style={{ height: 1500, width: 800 }}
+                    style={{ height: 300, width: 800 }}
                     source={{
                         html: `
                         <!DOCTYPE html>
@@ -59,7 +61,9 @@ const Contact = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+                
+            {/* </View> */}
+            </ScrollView>
         </>
     );
 }
@@ -68,12 +72,14 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor: '#a6a6a6',
+        //alignItems:'stretch',
+        //justifyContent:'space-around',
     },
     mapContainer:{
         //flex: 1, 
         marginVertical:15,
         alignSelf:'center',
-        height:'45%',
+        //height:0,
         width:'95%',
         //borderWidth:1,
         //borderRadius:50
@@ -82,10 +88,13 @@ const styles = StyleSheet.create({
     contactCard:{
         backgroundColor:'white',
         alignSelf:'center',
-        height:'49%',
+        height:'48%',
         width:'95%',
         borderRadius:15,
-        padding:10
+        padding:10,
+        //borderWidth:5,
+        //marginVertical:10
+        marginBottom:10
 
     }
 })
