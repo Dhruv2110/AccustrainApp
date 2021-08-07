@@ -1,32 +1,9 @@
-    if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${+1234567890}';
-    }
-    else {
-      phoneNumber = 'telprompt:${+1234567890}';
-    }
-
-
-      openWhatsApp = () => {
-    let msg = this.state.message;
-    let mobile = this.state.mobileNo;
-    if (mobile) {
-      if (msg) {
-        let url =
-          "whatsapp://send?text=" +
-          this.state.message +
-          "&phone=91" +
-          this.state.mobileNo;
-        Linking.openURL(url)
-          .then(data => {
-            console.log("WhatsApp Opened successfully " + data);
-          })
-          .catch(() => {
-            alert("Make sure WhatsApp installed on your device");
-          });
-      } else {
-        alert("Please enter message to send");
-      }
-    } else {
-      alert("Please enter mobile no");
-    }
-  };
+Type of service:-AMC and Paid service
+. AMC
+Name,Address,Phone,Product,Company,Scale Size,Capacity,
+Type of scale:-pit-less weigh bridge,pit-type weigh bridge,platform,table-top,lab-jewellery,
+AMC Type:-Yearly,Half-yearly
+. Paid
+Name,Address,Phone,Product,Company,Scale Size,Capacity,
+Type of scale:-pit-less weigh bridge,pit-type weigh bridge,platform,table-top,lab-jewellery,
+Fault,service type:-onsite(350/scale--upto 10KM),factory(150/scale)

@@ -15,10 +15,10 @@ const Header = () => {
 
 const styles = StyleSheet.create({
 
-    head:{
+    head: {
         width: '100%',
-        height: 80,
-        paddingTop: 30,
+        height: 85,
+        paddingTop: 40,
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
         justifyContent: 'center',
